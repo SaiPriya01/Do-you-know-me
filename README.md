@@ -2,5 +2,6 @@
 
 *Hey!! Welcome to my portfolio*
 
-*I made a quiz to my friends on how well they know about my interests* 
-*play this quiz and share your feedback*
+*I made a quiz to my friends on how well they know about my interests.* 
+
+*Play this quiz and share your feedback*
