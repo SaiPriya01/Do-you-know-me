@@ -1,6 +1,6 @@
-# **My portfolio**
+# **Do you know me quiz**
 
 *Hey!! Welcome to my portfolio*
 
-*It's coming up tomorrow when I learn HTML,CSS,JavaScript with Tanay Pratap on youtube* 
-
+*I made a quiz to my friends on how well they know about my interests* 
+*play this quiz and share your feedback*
