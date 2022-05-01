@@ -1,53 +1,79 @@
-var readlineSync = require("readline-sync"); 
- // To read user input
-var score=0; //initialize score to zero
-function Welcome() {
-  var userName=readlineSync.question("Please Enter your name to start the game ")  // To read user input
-   console.log("Hi "+userName+", How well do you know me");
-   console.log("Let's have a quiz");
+var readLineSync = require('readline-sync');
+var score = 0;
+
+function welcomeUser() {
+  var userName = readLineSync.question('please enter your name: ');
+  console.log(`\nHi! ${userName}. Welcome to "DO-YOU-KNOW-ME" quiz`);
 }
-// Array of objects with Q&A
-Questions =[{
-  question:"Where do i live ? ",
-  Answer:"Hyderabad"
-},
-{ question:"Where do i work ? ",
-  Answer:"Infosys"
-},
-{ question: "What is my favourite food ? ",
-  Answer:"Pizza"
-},
-{
-  question: "What is my favourite vacation spot ? ",
-  Answer:"suryapet"
-},
-{
-   question: "How old am I ? ",
-   Answer: "24"
-},
-{
-   question: "Am I morning person or night owl ? ",
-   Answer: "Both"
-},
-{
-   question: "What's my favourite sitcom ? ",
-  Answer: "Amrutham"
-}]
-// Function definition to iterate through array of questions
-function Quiz(question) {
-  
-  for (let i = 0; i < Questions.length; i++) {
-    var userAnswer = readlineSync.question(Questions[i].question);
-    if (userAnswer.toUpperCase()===Questions[i].Answer.toUpperCase()){
-      console.log("Yes! Your answer is correct");
-      console.log("-----------");
-      score++;
-    }
-    else console.log("Your answer is wrong");
-    console.log("-------------");
+var highScorers = [{
+    name: 'Pushpa',
+    score: 6
+  },
+  {
+    name: 'Rajitha',
+    score: 5
+  }
+]
+var questions = [{
+    question: "Where do i live ? ",
+    answer: "Hyderabad"
+  },
+  {
+    question: "Where do i work ? ",
+    answer: "Infosys"
+  },
+  {
+    question: "What is my favourite food ? ",
+    answer: "Pizza"
+  },
+  {
+    question: "What is my favourite vacation spot ? ",
+    answer: "suryapet"
+  },
+  {
+    question: "How old am I ? ",
+    answer: "24"
+  },
+  {
+    question: "Am I morning person or night owl ? ",
+    answer: "Both"
+  },
+  {
+    question: "What's my favourite sitcom ? ",
+    answer: "Amrutham"
+  }
+]
+
+function playQuiz(question, answer) {
+  var userAnswer = readLineSync.question(question);
+  if (userAnswer.toUpperCase() === answer.toUpperCase()) {
+    console.log('you are right!');
+    score++;
+  } else {
+    console.log('you are wrong! \ncorrect answer is: ' + answer);
+  }
+  console.log('current Score: ', score);
+  console.log('---------------------------------');
 }
-  console.log("You have scored: "+score+" points");
+
+function askQuestion() {
+  for (let i = 0; i < questions.length; i++) {
+    var currentQuestion = questions[i];
+    playQuiz(currentQuestion.question, currentQuestion.answer);
+  }
 }
-// function call
-Welcome()
-Quiz(Questions)
+
+function displayHighScorers() {
+  if (score < 1) {
+    console.log('your final score is: ', score, '. Don\'t worry if you don\'t know me.Let\'s have a coffee someday!');
+  } else {
+    console.log('Hurrah! you have scored: ', score, 'you know me well');
+  }
+  console.log('---------------------------------');
+  console.log('\nBelow are the high scorers of this QUIZ. If you have scored more than them send me a screenshot, I will update it  here');
+  console.log('---------------------------------');
+  highScorers.map(scorer => console.log(`${scorer.name}: ${scorer.score}`));
+}
+welcomeUser();
+askQuestion();
+displayHighScorers();
